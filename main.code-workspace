@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "domain"
+		},
+		{
+			"path": "main-service"
+		},
+		{
+			"path": "ms-cart"
+		},
+		{
+			"path": "ms-login"
+		},
+		{
+			"path": "ms-payment"
+		},
+		{
+			"path": "ms-prices-management"
+		},
+		{
+			"path": "ms-product-management"
+		},
+		{
+			"path": "ms-register"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic",
+			}
+}
