@@ -2,6 +2,7 @@ package com.jonasestevam.domain.dtos;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import com.jonasestevam.domain.enums.SaleStatus;
 
@@ -9,7 +10,7 @@ import lombok.Data;
 
 @Data
 public class SaleDTO {
-    private Integer id;
+    private UUID id;
 
     private List<ProductDTO> products;
 

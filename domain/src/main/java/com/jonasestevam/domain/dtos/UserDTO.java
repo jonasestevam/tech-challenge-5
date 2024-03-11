@@ -3,7 +3,9 @@ package com.jonasestevam.domain.dtos;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@SuppressWarnings("unused")
+import lombok.Data;
+
+@Data
 public class UserDTO {
     private UUID id;
     private String username;
