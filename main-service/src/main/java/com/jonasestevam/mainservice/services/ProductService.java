@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.jonasestevam.domain.dtos.ProductDTO;
 import com.jonasestevam.domain.entities.Product;
-import com.jonasestevam.domain.mappers.ProductMapper;
+import com.jonasestevam.mainservice.mappers.ProductMapper;
 import com.jonasestevam.mainservice.repositories.ProductRepository;
 
 @Service

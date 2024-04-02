@@ -1,4 +1,4 @@
-package com.jonasestevam.domain.mappers;
+package com.jonasestevam.msproductmanagement.mapper;
 
 import java.util.List;
 

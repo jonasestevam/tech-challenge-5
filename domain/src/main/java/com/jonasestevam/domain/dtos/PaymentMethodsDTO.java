@@ -14,6 +14,6 @@ public class PaymentMethodsDTO {
     private PaymentMethodsTypes paymentMethodsType;
 
     private Boolean isAative;
-    private BuyerDTO buyer;
+    private UserDTO buyer;
 
 }

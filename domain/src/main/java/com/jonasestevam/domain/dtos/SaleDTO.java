@@ -20,7 +20,7 @@ public class SaleDTO {
 
     private SaleStatus status;
 
-    private BuyerDTO buyer;
+    private UserDTO buyer;
 
     private AddressDTO shippingAddress;
 

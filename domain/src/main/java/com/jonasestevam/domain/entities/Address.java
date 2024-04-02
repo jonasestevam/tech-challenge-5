@@ -37,8 +37,8 @@ public class Address {
     private String number;
 
     @ManyToOne()
-    @JoinColumn(name = "buyer_id")
-    private Buyer buyer;
+    @JoinColumn(name = "user_id")
+    private User buyer;
 
     @Column
     private Boolean isAative;

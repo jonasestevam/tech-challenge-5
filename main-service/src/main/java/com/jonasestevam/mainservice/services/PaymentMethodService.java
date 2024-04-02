@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.jonasestevam.domain.dtos.PaymentMethodsDTO;
 import com.jonasestevam.domain.entities.PaymentMethods;
-import com.jonasestevam.domain.mappers.PaymentMethodMapper;
+import com.jonasestevam.mainservice.mappers.PaymentMethodMapper;
 import com.jonasestevam.mainservice.repositories.PaymentMethodRepository;
 
 @Service

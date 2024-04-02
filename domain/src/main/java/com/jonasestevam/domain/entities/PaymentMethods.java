@@ -34,6 +34,6 @@ public class PaymentMethods {
 
     @ManyToOne()
     @JoinColumn(name = "user_id")
-    private Buyer buyer;
+    private User buyer;
 
 }

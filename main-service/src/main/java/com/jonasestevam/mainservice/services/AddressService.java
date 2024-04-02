@@ -1,17 +1,14 @@
 package com.jonasestevam.mainservice.services;
 
-import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
 import com.jonasestevam.domain.dtos.AddressDTO;
 import com.jonasestevam.domain.entities.Address;
-import com.jonasestevam.domain.mappers.AddressMapper;
+import com.jonasestevam.mainservice.mappers.AddressMapper;
 import com.jonasestevam.mainservice.repositories.AddressRepository;
 
 import io.micrometer.common.lang.NonNull;

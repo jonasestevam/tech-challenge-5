@@ -1,4 +1,4 @@
-package com.jonasestevam.domain.mappers;
+package com.jonasestevam.mainservice.mappers;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

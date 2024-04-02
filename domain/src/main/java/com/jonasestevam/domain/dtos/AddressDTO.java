@@ -18,7 +18,7 @@ public class AddressDTO {
 
     private String number;
 
-    private BuyerDTO buyer;
+    private UserDTO buyer;
 
     private Boolean isAative;
 }
