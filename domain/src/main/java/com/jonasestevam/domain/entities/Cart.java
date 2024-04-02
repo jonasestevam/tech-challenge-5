@@ -1,6 +1,5 @@
 package com.jonasestevam.domain.entities;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,43 +9,27 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
 @Table
-public class Product {
-
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "product_id")
+    @Column(name = "cart_id")
     private UUID id;
 
-    @Column
-    private String name;
+    @OneToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private User user;
 
     @Column
-    private String description;
-
-    @Column
-    private String brand;
-
-    @Column
-    private BigDecimal price;
-
-    @Column
-    private Integer stockQuantity;
-
-    @Column
-    private String SKU;
-
-    @ManyToOne()
-    @JoinColumn(name = "store_id")
-    private Store store;
-
-    @ManyToMany(mappedBy = "products")
-    private List<Cart> carts;
+    @ManyToMany
+    @JoinTable(name = "product_cart", joinColumns = @JoinColumn(name = "cart_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> products;
 }
