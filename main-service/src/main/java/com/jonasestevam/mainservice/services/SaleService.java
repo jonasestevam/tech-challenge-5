@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.jonasestevam.domain.dtos.SaleDTO;
 import com.jonasestevam.domain.entities.Sale;
 import com.jonasestevam.mainservice.mappers.SaleMapper;
+import com.jonasestevam.mainservice.messaging.MessageProducer;
 import com.jonasestevam.mainservice.repositories.SaleRepository;
 
 @Service
@@ -18,10 +19,19 @@ public class SaleService {
     SaleRepository repository;
 
     @Autowired
+    MessageProducer messageProducer;
+
+    @Autowired
     SaleMapper mapper;
 
     public SaleDTO save(SaleDTO newSale) {
-        return mapper.toDto(repository.save(mapper.toEntity(newSale)));
+        var sale = repository.save(mapper.toEntity(newSale));
+        messageProducer.proccessPayment(sale);
+        return mapper.toDto(sale);
+    }
+
+    public void save(Sale sale) {
+        repository.save(sale);
     }
 
     public List<SaleDTO> getById(List<UUID> id) {
@@ -30,31 +40,13 @@ public class SaleService {
 
     public SaleDTO getById(UUID id) {
         Optional<Sale> saleOptional = repository.findById(id);
-
         if (!saleOptional.isPresent())
             return null;
-
         return mapper.toDto(saleOptional.get());
     }
 
     public List<SaleDTO> getAll() {
         return mapper.toDto(repository.findAll());
-
-    }
-
-    public SaleDTO update(SaleDTO newPaymentMethod) {
-        Optional<Sale> existingSaleOptional = repository.findById(newPaymentMethod.getId());
-        if (existingSaleOptional.isPresent()) {
-            SaleDTO existingSale = mapper.toDto(existingSaleOptional.get());
-
-            newPaymentMethod.setId(existingSale.getId());
-
-            repository.save(mapper.toEntity(newPaymentMethod));
-            return newPaymentMethod;
-        } else {
-            throw new IllegalArgumentException("Sale not found with ID: " +
-                    newPaymentMethod.getId());
-        }
     }
 
     public void delete(UUID id) {
