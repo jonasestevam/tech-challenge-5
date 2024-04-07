@@ -33,6 +33,19 @@ public class CartClient {
         callDeleteApi(url);
     }
 
+    public CartDTO getCartByUser(String userId) {
+        String url = BASE_URL_CART_MNGMT + "/user/" + userId;
+        return callGetApi(url).getBody();
+    }
+
+    public CartDTO getCartByID(String cartId) {
+        String url = BASE_URL_CART_MNGMT + "/" + cartId;
+        var response = callGetApi(url);
+
+        return response.getBody();
+
+    }
+
     @SuppressWarnings("null")
     private ResponseEntity<? extends Object> callPostApi(String url, Object request, Object obj) {
         return restTemplate.postForEntity(url, request, obj.getClass());
@@ -40,6 +53,10 @@ public class CartClient {
 
     private void callDeleteApi(String url) {
         restTemplate.delete(url);
+    }
+
+    private ResponseEntity<CartDTO> callGetApi(String url) {
+        return restTemplate.getForEntity(url, CartDTO.class);
     }
 
 }

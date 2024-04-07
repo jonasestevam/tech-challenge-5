@@ -43,4 +43,25 @@ public class CartService {
         }
 
     }
+
+    public void removeFromCart(String userID, String productiId) throws NotFoundException {
+        var cart = getCartByUser(userID);
+        cart.getProducts().removeIf(p -> p.getId().equals(UUID.fromString(productiId)));
+        cartRepository.save(cart);
+    }
+
+    public void deleteCart(String userId) throws NotFoundException {
+        Cart cart = getCartByUser(userId);
+        cartRepository.delete(cart);
+    }
+
+    public Cart getCartByUser(String userId) throws NotFoundException {
+        var user = userRepository.findById(UUID.fromString(userId)).orElseThrow(() -> new NotFoundException());
+        return cartRepository.findByUser(user).orElseThrow(() -> new NotFoundException());
+    }
+
+    public CartDTO getById(String cartID) throws NotFoundException {
+        return cartMapper
+                .toDto(cartRepository.findById(UUID.fromString(cartID)).orElseThrow(() -> new NotFoundException()));
+    }
 }
